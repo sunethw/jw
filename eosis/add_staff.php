@@ -49,9 +49,9 @@
                                   <td class="text-center">Admin</td>
                                   <td class="text-center">Colombo</td>
                                   <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
+                                     <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
+                                    <button class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Delete</button>
                                   </td>
                               </tr>
                               <tr>
@@ -61,9 +61,9 @@
                                   <td class="text-center">Admin</td>
                                   <td class="text-center">Colombo</td>
                                   <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
+                                    <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
+                                    <button class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Delete</button>
                                   </td>
                               </tr>
                               
