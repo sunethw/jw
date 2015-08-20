@@ -22,7 +22,7 @@
                         <ul class="sub">
                             <li><a href="general.html">Add users</a>
                             </li>
-                            <li><a href="buttons.html">Add locations</a>
+                            <li><a href="add_locations.php">Add locations</a>
                             </li>
                             <li><a href="panels.html">Panels</a>
                             </li>
