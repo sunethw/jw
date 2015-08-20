@@ -16,11 +16,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-diamond"></i> Add Customer</h3>
+                <h3><i class="fa fa-diamond"></i> Manage locations</h3>
                   <div class="row mt">
                     <div class="col-lg-12">
                         <div class="content-panel">
-                      <h4><i class="fa fa-angle-right"></i>Item Customer</h4>
+                      <h4><i class="fa fa-angle-right"></i>Location(s)</h4>
                           <section id="unseen">
 
 
@@ -35,96 +35,35 @@ $sql = "select * from locations;";
   }
   else
   {
-    echo "<table border='1'>
-    <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Salary</th>
-    <th>Department</th>
-    </tr>";
+    echo " <table class='table table-bordered table-striped table-condensed'>
+                            <thead>
+                              <tr>
+                                <th>Location code</th>
+                                <th>Location name</th>
+                                  
+                                <th class='text-center'>Action</th>
+                              </tr>
+                              </thead>";
+   
 
     while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
     {
-      echo "<tr>";
-      echo "<td>" . $row['id'] . "</td>";
-      echo "<td>" . $row['Name'] . "</td>";
-      echo "<td>" . $row['Phone'] . "</td>";
-      echo "<td>" . $row['Address'] . "</td>";
-      echo "<td>" . $row['Salary']. "</td>";
-      echo "<td>" . $row['Department']. "</td>";
-      echo "</tr>";
+                            echo "<tbody>
+                              <tr>";
+                                  echo "<td>". $row['locationCode'] ."</td>";
+                                  echo "<td>". $row['locationName'] ."</td>";
+                                  
+                                 echo "<td class='text-center'> 
+                                     <button class='btn btn-primary btn-xs'><i class='fa fa-eye'></i>&nbsp; View</button>
+                                      <button class='btn btn-success btn-xs'><i class='fa fa-pencil'></i>&nbsp; Edit</button>
+                                      <button class='btn btn-danger btn-xs'><i class='fa fa-close'></i>&nbsp; Delete</button>
+                                  </td>
+                              </tbody>";    
     }
     echo "</table>";
   }
   //mysqli_close($conn);
 ?>  
-
-
-
-
-
-
-
-                            <table class="table table-bordered table-striped table-condensed">
-                              <thead>
-                              <tr>
-                                  <th>Employee Name</th>
-                                 <th>Department</th>
-                                  <th class="numeric">NIC</th>
-                                  <th class="numeric">Join Date</th>
-                                  <th class="numeric">Employee ID</th>
-                                  <th class="numeric">Entitled</th>
-                                  <th class="numeric">Designation</th>
-                                  <th class="text-center">Action</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                            </tbody>  
-                            </table> 
                         </section>     
                     </div>
                 </div>
@@ -132,7 +71,7 @@ $sql = "select * from locations;";
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h4 class="mb"><i class="fa fa-angle-right"></i> Add locations</h4>
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> Add location</h4>
                             <form class="form-horizontal style-form" action="create_location.php" method="POST">
                               
                                <div class="form-group">
