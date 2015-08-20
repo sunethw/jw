@@ -78,6 +78,14 @@
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Comodity Details</h4>
                             <form class="form-horizontal style-form">
                               
+                               <div class="form-group">
+                                    <label class="col-sm-2 control-label required-label">Comodity Type</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control required-input">
+                                            <option>Comodities</option>
+                                        </select>
+                                    </div>
+                                </div>
                                
                                 
                                 <div class="form-group">
