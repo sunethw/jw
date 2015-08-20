@@ -1,8 +1,8 @@
 $(document).ready(function() {
- $(function(){
+
        $( ".required-label" ).append( "<span class='fa fa-asterisk required-star'></span>" );
-    });
-    
+
+
 });
 /*---LEFT BAR ACCORDION----*/
 $(function() {
