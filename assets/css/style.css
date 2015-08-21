@@ -2259,4 +2259,6 @@ label {
     min-height: 900px;
 }
 
-
+.error-page {
+    background: #e74c3c;
+}
