@@ -20,14 +20,14 @@ if(mysqli_num_rows($result) == 0)
 
 else // modify selected record
 {
-	$sql = "UPDATE staff_details SET Name='$name' , Phone='$phone', Address='$address', Salary='$salary', Department='$department' WHERE id='$staff_Id';";
+	$sql = "UPDATE locations SET locationName='$LocationName' WHERE locationCode='$LocationCode';";
 	$result = mysqli_query($conn,$sql);
 	
 }
 
 header("location:add_locations.php");
 
-echo "Updated location $LocationName";
+//echo "Updated location $LocationName";
 
 ?>
 <html>

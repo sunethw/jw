@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
     //echo "Welcome to the member's area, " . $_SESSION['sess_username'] . "!";
-  echo "your location " . $_SESSION['sess_location'] . "";
+  //echo "your location " . $_SESSION['sess_location'] . "";
 
 ?>
 
@@ -24,7 +24,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
                           <section id="unseen">
 
 
-<?php
+<?php // Display CRUD
 require_once '../config/api.php'; //db connection creation
 $sql = "select * from locations;";
   $result = mysqli_query($conn,$sql);
@@ -35,7 +35,7 @@ $sql = "select * from locations;";
   }
   else
   {
-    echo " <table class='table table-bordered table-striped table-condensed'>
+    echo " <table class='table table-bordered table-striped table-condensed'>";?>
                             <thead>
                               <tr>
                                 <th>Location code</th>
@@ -43,28 +43,38 @@ $sql = "select * from locations;";
                                   
                                 <th class='text-center'>Action</th>
                               </tr>
-                              </thead>";
+                              </thead>
    
-
+<?php
     while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
     {
                             echo "<tbody>
-                              <tr>";
-                                  echo "<td>". $row['locationCode'] ."</td>";
-                                  echo "<td>". $row['locationName'] ."</td>";
-                                  
-                                 echo "<td class='text-center'> 
-                                     <button class='btn btn-primary btn-xs'><i class='fa fa-eye'></i>&nbsp; View</button>
-                                      <button class='btn btn-success btn-xs'><i class='fa fa-pencil'></i>&nbsp; Edit</button>
-                                      <button class='btn btn-danger btn-xs'><i class='fa fa-close'></i>&nbsp; Delete</button>
-                                  </td>
-                              </tbody>";    
+                              <tr>"; ?>
+                                  <td><?php echo $row['locationCode']; ?></td>
+                                  <td><?php echo $row['locationName']; ?></td>
+                                  <td class='text-center'><a href="?locationCode=<?php echo $row['locationCode']; ?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>edit </a>
+                                                          <a href="delete_location.php?locationCode=<?php echo $row['locationCode']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-close"></i>delete </a>
+                                 </tbody>
+                                 <?php  
     }
     echo "</table>";
   }
   //mysqli_close($conn);
 ?>  
-                        </section>     
+<?php
+//require_once '../config/api.php'; //db connection creation
+
+$q=0;
+  if(!empty($_GET['locationCode'])){ //code for retrieving record for editing
+
+  $q = $_GET['locationCode']; }
+
+$result = mysqli_query($conn,"SELECT * FROM locations WHERE locationCode='$q'");
+$row= mysqli_fetch_array($result);
+?>                 
+
+
+       </section>     
                     </div>
                 </div>
             </div>     
@@ -77,7 +87,7 @@ $sql = "select * from locations;";
                                <div class="form-group">
                                     <label class="col-sm-2 control-label">Location code</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="LocationCode">
+                                        <input type="text" class="form-control" name="LocationCode" value="<?php echo $row['locationCode']; ?>">
                                     </div>
                                     
                                    
@@ -86,7 +96,7 @@ $sql = "select * from locations;";
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Location Name</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="LocationName">
+                                        <input type="text" class="form-control" name="LocationName" value="<?php echo $row['locationName']; ?>">
                                     </div>
                                 </div>
                                             

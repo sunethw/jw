@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
     //echo "Welcome to the member's area, " . $_SESSION['sess_username'] . "!";
-  echo "your location " . $_SESSION['sess_location'] . "";
+  //echo "your location " . $_SESSION['sess_location'] . "";
 
 ?>
 

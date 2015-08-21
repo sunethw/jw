@@ -36,7 +36,7 @@
 				$_SESSION['loggedin'] = admin;
     	
 			session_regenerate_id();
-			$_SESSION['sess_username'] = $userData['role'];
+			$_SESSION['sess_username'] = $userData['uid'];
 			$_SESSION['sess_location'] = $userData['location'];
 			session_write_close();
 			header("Location: ../admin/");

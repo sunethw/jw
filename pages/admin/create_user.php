@@ -4,30 +4,37 @@
 ob_start();
 session_start();
 
-$LocationCode= $_POST['LocationCode'];
-$LocationName = $_POST['LocationName'];
+$userId= $_POST['userId'];
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$userRole= $_POST['userRole'];
+$location = $_POST['locationName'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
+$code = md5($password);
+        
 require_once '../config/api.php';
 
-$query = "SELECT locationCode FROM locations WHERE locationCode='$LocationCode' ; ";
+$query = "SELECT userId FROM login WHERE userId='$userId';";
 $result = mysqli_query($conn,$query);
 
 if(mysqli_num_rows($result) == 0) 
 {// User not found. So, add record to the db
-	$query = "INSERT INTO Locations (locationCode,locationName) VALUES ('$LocationCode','$LocationName');";
+	$query = "INSERT INTO login (userId,firstName,lastName,role,location,uid,pwd) VALUES ('$userId','$firstName','$lastName','$userRole','$location','$username','$code');";
 	$result = mysqli_query($conn,$query);
 }
 
 else // modify selected record
 {
-	$sql = "UPDATE staff_details SET Name='$name' , Phone='$phone', Address='$address', Salary='$salary', Department='$department' WHERE id='$staff_Id';";
+	$sql = "UPDATE login SET userId='$userId' , firstName='$firstName', lastName='$lastName', role='$userRole', location='$location' WHERE userId='$userId';";
 	$result = mysqli_query($conn,$sql);
 	
 }
 
-header("location:add_locations.php");
+//header("location:add_users.php");
 
-echo "Updated location $LocationName";
+echo "Updated location $username";
 
 ?>
 <html>

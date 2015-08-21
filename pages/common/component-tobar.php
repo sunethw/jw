@@ -4,14 +4,14 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b><i class="fa fa-skyatlas"></i>&nbsp;EOSIS</b></a>  
+            <a href="index.html" class="logo"><b><i class="fa fa-skyatlas"></i>&nbsp;JW</b></a>  
             <!--logo end-->
             <div class="top-menu">
                 <ul class="nav navbar-nav navbar-right">
-                        <li><a class="logout" href="login.html"><i class="fa fa-power-off "></i>&nbsp; Logout</a>            
+                        <li><a class="logout" href="../login/logout.php"><i class="fa fa-power-off "></i>&nbsp; Logout</a>            
                     </li>
                     <li class="dropdown user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user-secret"></i>&nbsp; User Management <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user-secret"></i>&nbsp; <?php echo "welcome ". $_SESSION['sess_username'] . ""; ?> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">User Settings</a>
                             </li>

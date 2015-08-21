@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
     //echo "Welcome to the member's area, " . $_SESSION['sess_username'] . "!";
-  echo "your location " . $_SESSION['sess_location'] . "";
+  //echo "your location " . $_SESSION['sess_location'] . "";
 
 ?>
 <!DOCTYPE html>
@@ -36,64 +36,65 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
                          
                          
                           <section id="unseen">
-                            <table class="table table-bordered table-striped table-condensed">
-                              <thead>
+                            <!-- CRUD for add item -->
+                         <?php // Display CRUD
+require_once '../config/api.php'; //db connection creation
+$sql = "select * from locations;";
+  $result = mysqli_query($conn,$sql);
+
+  if(mysqli_num_rows($result) == 0)
+  {
+    echo 'No Item Found!';
+  }
+  else
+  {
+    echo " <table class='table table-bordered table-striped table-condensed'>";?>
+                            <thead>
                               <tr>
-                                  <th>Employee Name</th>
-                                 <th>Department</th>
-                                  <th class="numeric">NIC</th>
-                                  <th class="numeric">Join Date</th>
-                                  <th class="numeric">Employee ID</th>
-                                  <th class="numeric">Entitled</th>
-                                  <th class="numeric">Designation</th>
-                                  <th class="text-center">Action</th>
+                                <th>Item id</th>
+                                <th>Item code</th>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Gross weight</th>
+                                <th>Reduction Weight</th>
+                                <th>Wastage</th>
+                                <th>Goldsmith cost</th>
+                                <th>Description</th>
+                                  
+                                <th class='text-center'>Action</th>
                               </tr>
                               </thead>
-                              <tbody>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>Suneth Wijesiri</td>
-                                  <td>2015/01/01</td>
-                                  <td class="numeric">Casual Leave</td>
-                                  <td class="numeric">Full Day</td>
-                                  <td class="numeric">Aminda</td>
-                                  <td class="numeric">21</td>
-                                  <td class="numeric">10</td>
-                                  <td class="text-center"> 
-                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i>&nbsp; Aprove</button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-close"></i>&nbsp; Reject</button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View</button>
-                                  </td>
-                              </tr>
-                            </tbody>  
-                            </table> 
+   
+<?php
+    while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
+    {
+                            echo "<tbody>
+                              <tr>"; ?>
+                                  <td><?php echo $row['locationCode']; ?></td>
+                                  <td><?php echo $row['locationName']; ?></td>
+                                  <td class='text-center'><a href="?locationCode=<?php echo $row['locationCode']; ?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>edit </a>
+                                                          <a href="delete_location.php?locationCode=<?php echo $row['locationCode']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-close"></i>delete </a>
+                                 </tbody>
+                                 <?php  
+    }
+    echo "</table>";
+  }
+  //mysqli_close($conn);
+?>  
+<?php
+//require_once '../config/api.php'; //db connection creation
+
+$q=0;
+  if(!empty($_GET['locationCode'])){ //code for retrieving record for editing
+
+  $q = $_GET['locationCode']; }
+
+$result = mysqli_query($conn,"SELECT * FROM locations WHERE locationCode='$q'");
+$row= mysqli_fetch_array($result);
+?>                 
+
+
+
                         </section>     
                     </div>
                 </div>
@@ -102,12 +103,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'admin') {
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Item Details</h4>
-                            <form class="form-horizontal style-form" action="manage_items.php">
+                            <form class="form-horizontal style-form" action="manage_items.php" method="POST">
+
+                              <input type="hidden" name="itemId">
                               
                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Item id</label>
+                                    <label class="col-sm-2 control-label">Item code</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="Item_Id">
+                                        <input type="text" class="form-control" name="ItemCode">
                                     </div>
                                     
                                    

@@ -7,12 +7,12 @@
                     <!--	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Marcel Newman</h5>-->
 
-                    <li class="mt">
+                  <!--   <li class="mt">
                         <a href="add_item.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Manage items</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="sub-menu">
                         <a href="javascript:;">
@@ -20,43 +20,30 @@
                             <span>user management</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="general.html">Add users</a>
+                            <li><a href="add_users.php">Add user(s)</a>
                             </li>
-                            <li><a href="add_locations.php">Add locations</a>
+                            <li><a href="add_locations.php">Add location(s)</a>
                             </li>
-                            <li><a href="panels.html">Panels</a>
-                            </li>
+                         <!--    <li><a href="panels.html">Panels</a>
+                            </li> -->
                         </ul>
                     </li>
 
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-cogs"></i>
-                            <span>Components</span>
+                            <span>Item Management</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="calendar.html">Calendar</a>
+                            <li><a href="add_item.php">Add item(s)</a>
                             </li>
-                            <li><a href="gallery.html">Gallery</a>
+                            <!-- <li><a href="gallery.html">Gallery</a>
                             </li>
                             <li><a href="todo_list.html">Todo List</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a class="active" href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Extra Pages</span>
-                        </a>
-                        <ul class="sub">
-                            <li class="active"><a href="blank.html">Blank Page</a>
-                            </li>
-                            <li><a href="login.html">Login</a>
-                            </li>
-                            <li><a href="lock_screen.html">Lock Screen</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-tasks"></i>
