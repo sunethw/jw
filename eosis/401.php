@@ -15,9 +15,9 @@
     <?php //include 'component-sidebar.php';?> 
 
         <section class="error-wrapper text-center ">
-            <h1><img alt="" src="assets/img/404-error.png"></h1>
-            <h2>page not found</h2>
-            <h3>We Couldn’t Find This Page</h3>
+            <h1><img alt="" src="assets/img/401-error.png"></h1>
+            <h2>access denied</h2>
+<!--            <h3>We Couldn’t Find This Page</h3>-->
             <a class="back-btn btn btn-default" href="index-2.html"> Back To Home</a>
         </section>
 

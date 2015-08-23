@@ -2279,3 +2279,21 @@ label {
 .margin-top50{
          margin-top: 50px;   
 }
+.error-page{
+    background: #e74c3c;
+}
+
+.error-wrapper {
+    width: 100%;
+    height: auto;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    color: #fff;
+    
+}
+
+.error-wrapper h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 75px;
+}
